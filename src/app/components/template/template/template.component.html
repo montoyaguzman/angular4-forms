@@ -4,7 +4,6 @@
   </div>
 </div>
 
-
 <div class="row">
     <form #formularioTemp="ngForm" novalidate="" (ngSubmit)="guardar(formularioTemp)">
       <!-- Usando un ngClass >>>>>  [ngClass] = "{ 'validate': nombre.errors?.minlength || nombre.errors?.required }" -->
@@ -12,7 +11,7 @@
           <span>Nombre: </span>
           <input type="text" id="nombre" name="nombre" class="validate"
           minlength="5" required
-          [(ngModel)]="usuario.nombre" #nombre="ngModel"
+
           >
           <br/>
           <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid && nombre.errors?.required">Campo obligatorio</span>
@@ -62,8 +61,7 @@
         <div class="col s6 offset-s1">
           <p>
             <input type="checkbox" id="acepta" name="acepta" required
-                    [(ngModel)]="usuario.aceptaTerminos"
-            >
+                    [(ngModel)]="usuario.aceptaTerminos">
             <label for="acepta">Acepta los terminos y condiciones</label>
           </p>
         </div>
@@ -74,7 +72,6 @@
         </div>
     </form>
   </div>
-
 
 <div class="row">
   <div class="col s6 offset-s1">

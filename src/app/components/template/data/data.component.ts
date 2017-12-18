@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class DataComponent implements OnInit {
+  titleData = 'Formulario Data';
 
   constructor() { }
+
 
   ngOnInit() {
   }
