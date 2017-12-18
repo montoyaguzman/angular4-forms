@@ -1,3 +1,7 @@
+<!--- APUNTES DE VALIDACIONES
+  <span class="letraAdvertencia" *ngIf="!formulario.controls['nombre'].valid && formulario.controls['nombre'].touched">
+-->
+
 <div class="row">
   <div class="col s6 offset-s1">
     <h4>{{ titleData }}</h4>
@@ -5,20 +9,30 @@
 </div>
 
 <div class="row">
-    <form>
+    <form [formGroup]="formulario" (ngSubmit)="registrar()" novalidate="novalidate">
         <div class="col s6 offset-s1 input-field">
           <span>Nombre: </span>
-          <input type="text" id="nombre" name="nombre">
+          <input type="text" id="nombre" name="nombre"
+          formControlName="nombre">
+          <span class="letraAdvertencia" *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.required">
+            El campo es obligatorio
+          </span>
+          <span class="letraAdvertencia" *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.minlength">Minimo 5 caracteres</span>
         </div>
         <div class="col s6 offset-s1 input-field">
           <span>Apellido: </span>
-          <input type="text" id="apellido" name="apellido">
+          <input type="text" id="apellido" name="apellido"
+          formControlName="apellido">
+          <span class="letraAdvertencia" *ngIf="formulario.controls['correo'].touched && formulario.controls['apellido'].errors?.required">El campo es obligatorio</span>
         </div>
         <div class="col s6 offset-s1 input-field">
           <span>Correo: </span>
-          <input type="text" id="correo" name="correo">
+          <input type="text" id="correo" name="correo"
+          formControlName="correo">
+          <span class="letraAdvertencia" *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.required">El campo es obligatorio</span>
+          <span class="letraAdvertencia" *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.pattern">No es un correo valido</span>
         </div>
-        <div class="col s6 offset-s1 input-field">
+        <!--<div class="col s6 offset-s1 input-field">
           <select id="pais" name="pais">
             <option value="">Selecciona</option>
           </select>
@@ -43,7 +57,7 @@
             <input type="checkbox" id="acepta" name="acepta">
             <label for="acepta">Acepta los terminos y condiciones</label>
           </p>
-        </div>
+        </div>-->
         <div class="col s6 offset-s1">
           <button type="submit">
             Guardar
