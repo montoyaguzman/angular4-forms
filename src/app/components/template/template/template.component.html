@@ -1,43 +1,45 @@
-<h4>{{ titleTemplate }}</h4>
-
-<form #formularioTemp="ngForm" novalidate="" (ngSubmit)="guardar(formularioTemp)">
-
-  <div>
-    <span>Nombre: </span>
-    <input type="text" id="nombre" name="nombre" required
-    [(ngModel)]="usuario.nombre" #nombre="ngModel"
-    >
-    <br/>
-    <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid">Error de llenado</span>
+<div class="row">
+  <div class="col s6 offset-s1">
+    <h4>{{ titleTemplate }}</h4>
   </div>
+</div>
 
-  <br/>
 
-  <div>
-    <span>Apellido: </span>
-    <input type="text" id="apellido" name="apellido" required
-    [(ngModel)]="usuario.apellido" #apellido="ngModel"
-    >
-    <span class="letraAdvertencia" *ngIf="apellido.touched && !apellido.valid && apellido.errors?.required">Error de llenado</span>
+<div class="row">
+    <form #formularioTemp="ngForm" novalidate="" (ngSubmit)="guardar(formularioTemp)">
+      <!-- Usando un ngClass >>>>>  [ngClass] = "{ 'validate': nombre.errors?.minlength || nombre.errors?.required }" -->
+        <div class="col s6 offset-s1 input-field">
+          <span>Nombre: </span>
+          <input type="text" id="nombre" name="nombre" class="validate"
+          minlength="5" required
+          [(ngModel)]="usuario.nombre" #nombre="ngModel"
+          >
+          <br/>
+          <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid && nombre.errors?.required">Campo obligatorio</span>
+          <span class="letraAdvertencia" *ngIf="nombre.touched && nombre.errors?.minlength">Minimo 5 caracteres</span>
+        </div>
+        <div class="col s6 offset-s1 input-field">
+          <span>Apellido: </span>
+          <input type="text" id="apellido" name="apellido" required
+          [(ngModel)]="usuario.apellido" #apellido="ngModel"
+          >
+          <br/>
+          <span class="letraAdvertencia" *ngIf="apellido.touched && !apellido.valid && apellido.errors?.required">Campo obligatorio</span>
+        </div>
+        <div class="col s6 offset-s1 input-field">
+          <span>Correo: </span>
+          <input type="text" id="correo" name="correo"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+          [(ngModel)]="usuario.correo" #correo="ngModel"
+          >
+          <br/>
+          <span class="letraAdvertencia" *ngIf="correo.touched && !correo.valid && correo.errors?.required">Campo obligatorio</span>
+          <span class="letraAdvertencia" *ngIf="correo.touched && correo.errors?.pattern">No es un correo valido</span>
+        </div>
+        <div class="col s6 offset-s1">
+          <button type="submit">
+            Guardar
+          </button>
+        </div>
+    </form>
   </div>
-
-  <br/>
-
-  <div>
-    <span>Correo: </span>
-    <input type="text" id="correo" name="correo"
-    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-    [(ngModel)]="usuario.correo" #correo="ngModel"
-    >
-    <span class="letraAdvertencia" *ngIf="correo.touched && !correo.valid">Error de llenado</span>
-  </div>
-
-  <br/>
-
-  <div>
-    <button type="submit">
-      Guardar
-    </button>
-  </div>
-
-</form>
