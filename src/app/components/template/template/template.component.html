@@ -1,0 +1,43 @@
+<h4>{{ titleTemplate }}</h4>
+
+<form #formularioTemp="ngForm" novalidate="" (ngSubmit)="guardar(formularioTemp)">
+
+  <div>
+    <span>Nombre: </span>
+    <input type="text" id="nombre" name="nombre" required
+    [(ngModel)]="usuario.nombre" #nombre="ngModel"
+    >
+    <br/>
+    <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid">Error de llenado</span>
+  </div>
+
+  <br/>
+
+  <div>
+    <span>Apellido: </span>
+    <input type="text" id="apellido" name="apellido" required
+    [(ngModel)]="usuario.apellido"
+    >
+    <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid">Error de llenado</span>
+  </div>
+
+  <br/>
+
+  <div>
+    <span>Correo: </span>
+    <input type="text" id="correo" name="correo"
+    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+    [(ngModel)]="usuario.correo"
+    >
+    <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid">Error de llenado</span>
+  </div>
+
+  <br/>
+
+  <div>
+    <button type="submit">
+      Guardar
+    </button>
+  </div>
+
+</form>
