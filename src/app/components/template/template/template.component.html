@@ -16,9 +16,9 @@
   <div>
     <span>Apellido: </span>
     <input type="text" id="apellido" name="apellido" required
-    [(ngModel)]="usuario.apellido"
+    [(ngModel)]="usuario.apellido" #apellido="ngModel"
     >
-    <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid">Error de llenado</span>
+    <span class="letraAdvertencia" *ngIf="apellido.touched && !apellido.valid && apellido.errors?.required">Error de llenado</span>
   </div>
 
   <br/>
@@ -27,9 +27,9 @@
     <span>Correo: </span>
     <input type="text" id="correo" name="correo"
     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-    [(ngModel)]="usuario.correo"
+    [(ngModel)]="usuario.correo" #correo="ngModel"
     >
-    <span class="letraAdvertencia" *ngIf="nombre.touched && !nombre.valid">Error de llenado</span>
+    <span class="letraAdvertencia" *ngIf="correo.touched && !correo.valid">Error de llenado</span>
   </div>
 
   <br/>
