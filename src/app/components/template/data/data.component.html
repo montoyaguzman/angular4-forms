@@ -14,50 +14,37 @@
           <span>Nombre: </span>
           <input type="text" id="nombre" name="nombre"
           formControlName="nombre">
-          <span class="letraAdvertencia" *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.required">
+          <span class="letraAdvertencia"
+          *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.required">
             El campo es obligatorio
           </span>
-          <span class="letraAdvertencia" *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.minlength">Minimo 5 caracteres</span>
+          <span class="letraAdvertencia"
+          *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.minlength">
+            Minimo 5 caracteres
+          </span>
         </div>
         <div class="col s6 offset-s1 input-field">
           <span>Apellido: </span>
           <input type="text" id="apellido" name="apellido"
           formControlName="apellido">
-          <span class="letraAdvertencia" *ngIf="formulario.controls['correo'].touched && formulario.controls['apellido'].errors?.required">El campo es obligatorio</span>
+          <span class="letraAdvertencia"
+          *ngIf="formulario.controls['apellido'].touched && formulario.controls['apellido'].errors?.required">
+            El campo es obligatorio
+          </span>
         </div>
         <div class="col s6 offset-s1 input-field">
           <span>Correo: </span>
           <input type="text" id="correo" name="correo"
           formControlName="correo">
-          <span class="letraAdvertencia" *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.required">El campo es obligatorio</span>
-          <span class="letraAdvertencia" *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.pattern">No es un correo valido</span>
+          <span class="letraAdvertencia"
+          *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.required">
+            El campo es obligatorio
+          </span>
+          <span class="letraAdvertencia"
+          *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.pattern">
+            No es un correo valido
+          </span>
         </div>
-        <!--<div class="col s6 offset-s1 input-field">
-          <select id="pais" name="pais">
-            <option value="">Selecciona</option>
-          </select>
-          <label>Pais</label>
-        </div>
-        <div class="col s6 offset-s1">
-          <p>
-            <input type="radio" name="sexo" id="sex1"
-            value="Masculino"
-            />
-            <label for="sex1">Masculino</label>
-          </p>
-          <p>
-            <input type="radio" name="sexo" id="sex2"
-            value="Femenino"
-            />
-            <label for="sex2">Femenino</label>
-          </p>
-        </div>
-        <div class="col s6 offset-s1">
-          <p>
-            <input type="checkbox" id="acepta" name="acepta">
-            <label for="acepta">Acepta los terminos y condiciones</label>
-          </p>
-        </div>-->
         <div class="col s6 offset-s1">
           <button type="submit">
             Guardar
