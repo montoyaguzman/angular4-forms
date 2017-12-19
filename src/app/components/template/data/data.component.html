@@ -10,40 +10,45 @@
 
 <div class="row">
     <form [formGroup]="formulario" (ngSubmit)="registrar()" novalidate="novalidate">
-        <div class="col s6 offset-s1 input-field">
-          <span>Nombre: </span>
-          <input type="text" id="nombre" name="nombre"
-          formControlName="nombre">
-          <span class="letraAdvertencia"
-          *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.required">
-            El campo es obligatorio
-          </span>
-          <span class="letraAdvertencia"
-          *ngIf="formulario.controls['nombre'].touched && formulario.controls['nombre'].errors?.minlength">
-            Minimo 5 caracteres
-          </span>
-        </div>
-        <div class="col s6 offset-s1 input-field">
-          <span>Apellido: </span>
-          <input type="text" id="apellido" name="apellido"
-          formControlName="apellido">
-          <span class="letraAdvertencia"
-          *ngIf="formulario.controls['apellido'].touched && formulario.controls['apellido'].errors?.required">
-            El campo es obligatorio
-          </span>
+      <div formGroupName="nombreCompleto">
+          <div class="col s6 offset-s1 input-field">
+            <span>Nombre: </span>
+            <input type="text" id="nombre" name="nombre"
+            formControlName="nombre">
+            <span class="letraAdvertencia"
+            *ngIf="formulario.get('nombreCompleto.nombre').touched
+            && formulario.get('nombreCompleto.nombre').errors?.required">
+              El campo es obligatorio
+            </span>
+            <span class="letraAdvertencia"
+            *ngIf="formulario.get('nombreCompleto.nombre').touched
+            && formulario.get('nombreCompleto.nombre').errors?.minlength">
+              Minimo 5 caracteres
+            </span>
+          </div>
+          <div class="col s6 offset-s1 input-field">
+            <span>Apellido: </span>
+            <input type="text" id="apellido" name="apellido"
+            formControlName="apellido">
+            <span class="letraAdvertencia"
+            *ngIf="formulario.controls['nombreCompleto'].controls['apellido'].touched
+            && formulario.controls['nombreCompleto'].controls['apellido'].errors?.required">
+              El campo es obligatorio
+            </span>
+          </div>
         </div>
         <div class="col s6 offset-s1 input-field">
           <span>Correo: </span>
           <input type="text" id="correo" name="correo"
           formControlName="correo">
-          <span class="letraAdvertencia"
+          <!--<span class="letraAdvertencia"
           *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.required">
             El campo es obligatorio
           </span>
           <span class="letraAdvertencia"
           *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.pattern">
             No es un correo valido
-          </span>
+          </span>-->
         </div>
         <div class="col s6 offset-s1">
           <button type="submit">
