@@ -35,21 +35,38 @@
             && formulario.controls['nombreCompleto'].controls['apellido'].errors?.required">
               El campo es obligatorio
             </span>
+            <span class="letraAdvertencia"
+            *ngIf="formulario.controls['nombreCompleto'].controls['apellido'].touched
+            && formulario.controls['nombreCompleto'].controls['apellido'].errors?.apellidoProhibido">
+              No esta permitido 'bobo'
+            </span>
           </div>
         </div>
         <div class="col s6 offset-s1 input-field">
           <span>Correo: </span>
           <input type="text" id="correo" name="correo"
           formControlName="correo">
-          <!--<span class="letraAdvertencia"
+          <span class="letraAdvertencia"
           *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.required">
             El campo es obligatorio
           </span>
           <span class="letraAdvertencia"
           *ngIf="formulario.controls['correo'].touched && formulario.controls['correo'].errors?.pattern">
             No es un correo valido
-          </span>-->
+          </span>
         </div>
+
+        <div class="col s6 offset-s1 input-field">
+          <span>Password: </span>
+          <input type="password" id="password" name="password"
+          formControlName="password1">
+        </div>
+        <div class="col s6 offset-s1 input-field">
+          <span>Repetir contrasena: </span>
+          <input type="password" id="password" name="password"
+          formControlName="password2">
+        </div>
+
         <div class="col s6 offset-s1">
           <button type="submit">
             Guardar
